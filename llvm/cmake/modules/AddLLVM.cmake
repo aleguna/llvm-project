@@ -36,7 +36,9 @@ macro(add_llvm_library name)
   # name, but using get_property(... SET) doesn't suffice to determine if a
   # property has been set to an empty value.
   get_property(lib_deps GLOBAL PROPERTY LLVMBUILD_LIB_DEPS_${name})
-  target_link_libraries(${name} ${lib_deps})
+  if( BUILD_SHARED_LIBS )
+    target_link_libraries(${name} ${lib_deps})
+  endif()
 endmacro(add_llvm_library name)
 
 macro(add_llvm_loadable_module name)
