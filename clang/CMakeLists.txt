@@ -201,9 +201,11 @@ macro(add_clang_library name)
     add_dependencies( ${name} ${LLVM_COMMON_DEPENDS} )
   endif( LLVM_COMMON_DEPENDS )
 
-  llvm_config( ${name} ${LLVM_LINK_COMPONENTS} )
-  target_link_libraries( ${name} ${LLVM_COMMON_LIBS} )
-  link_system_libs( ${name} )
+  if (SHARED_LIBRARY)
+    llvm_config( ${name} ${LLVM_LINK_COMPONENTS} )
+    target_link_libraries( ${name} ${LLVM_COMMON_LIBS} )
+    link_system_libs( ${name} )
+  endif ()
 
   install(TARGETS ${name}
     LIBRARY DESTINATION lib${LLVM_LIBDIR_SUFFIX}
