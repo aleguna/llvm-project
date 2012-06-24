@@ -5,5 +5,3 @@ add_llvm_library(LLVMMBlazeDesc
   MBlazeMCTargetDesc.cpp
   MBlazeELFObjectWriter.cpp
   )
-
-add_dependencies(LLVMMBlazeDesc MBlazeCommonTableGen)

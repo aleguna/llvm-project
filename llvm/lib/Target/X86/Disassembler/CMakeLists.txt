@@ -12,5 +12,3 @@ set_property(
   PROPERTY COMPILE_FLAGS "/Od"
   )
 endif()
-
-add_dependencies(LLVMX86Disassembler X86CommonTableGen)
