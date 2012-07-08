@@ -44,9 +44,9 @@ function(llvm_process_sources OUT_VAR)
   # that this is not strictly needed, as dependencies of the .cpp
   # sources on the tablegenned .inc files are detected and handled,
   # but just in case...
-  foreach( s ${sources} )
-    set( f ${CMAKE_CURRENT_SOURCE_DIR}/${s} )
-  endforeach(s)
+  foreach(h ${TABLEGEN_OUTPUT})
+    set_source_files_properties(${h} PROPERTIES GENERATED 1)
+  endforeach (h)
   if( MSVC_IDE )
     # This adds .td and .h files to the Visual Studio solution:
     # FIXME: Shall we handle *.def here?
